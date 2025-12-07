@@ -1,0 +1,16 @@
+name: test2
+on: [push]
+jobs:
+  test_2:
+    name: Test2
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with: 
+        python-version: "3.10"
+    - name: Run Program with test data
+      run:  python3 find_lowest_number.py test_data/test2_input.txt one_number.txt
+    - name: Compare program output with expected
+      run: diff test_data/test2_expected.txt one_number.txt
